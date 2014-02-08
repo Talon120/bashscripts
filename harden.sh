@@ -12,7 +12,10 @@ rm -rf harden-log
 mkdir harden-log
 sudo apt-get update > update.txt
 sudo apt-get install nano > nano.txt
-sudo apt-get install ufw
+
+# UFW provides added security but significantly slows connection
+#sudo apt-get install ufw
+
 mv update.txt harden-log
 mv nano.txt harden-log
 
@@ -24,13 +27,13 @@ sudo adduser $input_var
 sudo usermod -a -G sudo $input_var
 
 # Configure UFW
-sudo ufw allow ssh
-sudo ufw allow http
+#sudo ufw allow ssh
+#sudo ufw allow http
 echo "Enter desired SSH port (1000-60000 recommended):"
 read port_var
-sudo ufw allow $port_var
-sudo ufw enable
-sudo ufw status verbose
+#sudo ufw allow $port_var
+#sudo ufw enable
+#sudo ufw status verbose
 
 # Configure root login and update SSH port
 sudo sed -i -e "/Port/c\Port $port_var" /etc/ssh/sshd_config
