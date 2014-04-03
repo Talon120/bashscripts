@@ -376,7 +376,8 @@ sudo touch temp
 echo "Modifying rc.local"
 sudo sed "$ i\sleep 10" /etc/rc.local >> temp
 sudo sed "$ i\/etc/init.d/apache2 reload" temp >> temp
-sudo sed "$ i\screen -fa -d -m rtorrent" temp >> tempsudo mv -f temp /etc/rc.local
+sudo sed "$ i\screen -fa -d -m rtorrent" temp >> temp
+sudo mv -f temp /etc/rc.local
 echo "Modification complete"
 
 # Change ownership of new directories in '/var/www/'
